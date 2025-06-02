@@ -42,7 +42,7 @@ function handler(links, pattern, onlyDomains) {
   // To filter links like: javascript:void(0)
   const resLinks = links.filter(link => link.lastIndexOf('://', 10) > 0);
   // Remove duplicate, sorting of links.
-  const items = [...(new Set(resLinks))].sort();
+  const items = resLinks.slice().sort();
   const re = pattern ? new RegExp(pattern, 'g') : null;
   const added = items.filter(link => addNodes(link, containerLinks, re, onlyDomains));
 
